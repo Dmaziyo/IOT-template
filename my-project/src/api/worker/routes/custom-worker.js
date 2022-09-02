@@ -17,5 +17,13 @@ module.exports = {
         auth: false,
       },
     },
+    {
+      method: "POST",
+      path: "/c-create",
+      handler: "worker.customCreate",
+      config: {
+        auth: false,
+      },
+    },
   ],
 };
