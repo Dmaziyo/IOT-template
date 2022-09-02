@@ -5,19 +5,16 @@ module.exports = {
       method: "GET",
       path: "/changeState/:id",
       handler: "worker.changeState",
+      config: {
+        auth: false,
+      },
     },
     {
       method: "GET",
       path: "/getWorkingPeople",
       handler: "worker.workingPeople",
-    },
-    {
-      // Route with custom policies
-      method: "POST",
-      path: "/restaurants/:id/reservation",
-      handler: "Restaurant.reservation",
       config: {
-        policies: ["is-authenticated", "has-credit-card"],
+        auth: false,
       },
     },
   ],
