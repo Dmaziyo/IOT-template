@@ -7,19 +7,25 @@
 const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::worker.worker", ({ strapi }) => ({
+  // 根据卡号来修改状态
   async changeState(ctx) {
-    const id = ctx.params.id;
-    const { query } = ctx;
-    let worker = await strapi.services["api::worker.worker"].findOne(id, query);
+    const card_num = ctx.params.card;
+    // 找到卡号
+    let worker = await strapi.services["api::worker.worker"].findCard(card_num);
     console.log(worker);
+    if (!worker)
+      return {
+        code: 404,
+        msg: "不存在该卡号",
+      };
     worker.work_state = !worker.work_state;
 
-    await strapi.services["api::worker.worker"].update(
-      {
-        id,
+    // 使用entityService来自己实现
+    await strapi.entityService.update("api::worker.worker", worker.id, {
+      data: {
+        ...worker,
       },
-      worker
-    );
+    });
     return {
       code: 200,
       msg: "修改成功",
@@ -27,20 +33,22 @@ module.exports = createCoreController("api::worker.worker", ({ strapi }) => ({
       pastState: !worker.work_state,
     };
   },
+
+  // 获取所有正在上班的人
   async workingPeople() {
-    let worker = await strapi.services["api::worker.worker"].find({
-      work_state: true,
+    const worker = await strapi.entityService.findMany("api::worker.worker", {
+      filters: { work_state: true },
     });
     return { length: worker.length };
   },
+
+  // 自制create，会判断是否存在该卡号
   async customCreate(ctx) {
     let worker = ctx.request.body;
-    console.log("创造用户", worker);
 
     let result = await strapi.services["api::worker.worker"].findCard(
       worker.card_num
     );
-    console.log("查找结果", result);
     if (result) {
       return {
         code: 444,
@@ -61,22 +69,24 @@ module.exports = createCoreController("api::worker.worker", ({ strapi }) => ({
       };
     }
   },
-  async verifyCard(ctx) {
-    let body = ctx.request.body;
-    let result = await strapi.services["api::worker.worker"].findCard(
-      body.card_num
-    );
-    if (!result) {
-      return {
-        id: -1,
-        work_state: -1,
-      };
-    } else {
-      return {
-        id: result.id,
-        work_state: result.work_state,
-        name: result.name,
-      };
-    }
-  },
+
+  // 目前不需要，因为刷卡后就直接修改工作状态
+  // async verifyCard(ctx) {
+  //   let body = ctx.request.body;
+  //   let result = await strapi.services["api::worker.worker"].findCard(
+  //     body.card_num
+  //   );
+  //   if (!result) {
+  //     return {
+  //       id: -1,
+  //       work_state: -1,
+  //     };
+  //   } else {
+  //     return {
+  //       id: result.id,
+  //       work_state: result.work_state,
+  //       name: result.name,
+  //     };
+  //   }
+  // },
 }));
