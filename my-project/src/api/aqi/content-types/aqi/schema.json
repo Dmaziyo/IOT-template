@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aqis",
+  "info": {
+    "singularName": "aqi",
+    "pluralName": "aqis",
+    "displayName": "aqi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    }
+  }
+}

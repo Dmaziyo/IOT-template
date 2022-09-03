@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "humids",
+  "info": {
+    "singularName": "humid",
+    "pluralName": "humids",
+    "displayName": "humid"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    }
+  }
+}

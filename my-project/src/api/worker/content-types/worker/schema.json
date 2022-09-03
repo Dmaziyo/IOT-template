@@ -4,7 +4,8 @@
   "info": {
     "singularName": "worker",
     "pluralName": "workers",
-    "displayName": "worker"
+    "displayName": "worker",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,7 +19,8 @@
       "type": "string"
     },
     "work_state": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   }
 }
