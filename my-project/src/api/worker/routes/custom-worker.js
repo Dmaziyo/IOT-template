@@ -3,7 +3,7 @@ module.exports = {
     {
       // Path defined with a URL parameter
       method: "GET",
-      path: "/changeState/:id",
+      path: "/changeState/:card",
       handler: "worker.changeState",
       config: {
         auth: false,
