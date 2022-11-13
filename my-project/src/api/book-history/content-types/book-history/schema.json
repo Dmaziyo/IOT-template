@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_histories",
+  "info": {
+    "singularName": "book-history",
+    "pluralName": "book-histories",
+    "displayName": "book_history"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "book_num": {
+      "type": "string"
+    },
+    "borrower": {
+      "type": "string"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "end_time": {
+      "type": "string"
+    }
+  }
+}

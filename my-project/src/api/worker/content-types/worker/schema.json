@@ -21,6 +21,9 @@
     "work_state": {
       "type": "boolean",
       "default": false
+    },
+    "start_time": {
+      "type": "biginteger"
     }
   }
 }

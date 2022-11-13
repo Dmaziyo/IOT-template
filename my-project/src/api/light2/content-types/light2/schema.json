@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "light2s",
+  "info": {
+    "singularName": "light2",
+    "pluralName": "light2s",
+    "displayName": "Light2"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    },
+    "board_id": {
+      "type": "string"
+    }
+  }
+}

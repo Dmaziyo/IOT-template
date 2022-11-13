@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trespasses",
+  "info": {
+    "singularName": "trespass",
+    "pluralName": "trespasses",
+    "displayName": "trespass",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "trespass_time": {
+      "type": "string"
+    },
+    "classroom": {
+      "type": "string"
+    }
+  }
+}

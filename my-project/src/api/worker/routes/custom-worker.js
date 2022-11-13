@@ -2,7 +2,7 @@ module.exports = {
   routes: [
     {
       // Path defined with a URL parameter
-      method: "GET",
+      method: "POST",
       path: "/changeState/:card",
       handler: "worker.changeState",
       config: {
@@ -21,6 +21,14 @@ module.exports = {
       method: "POST",
       path: "/c-create",
       handler: "worker.customCreate",
+      config: {
+        auth: false,
+      },
+    },
+    {
+      method: "GET",
+      path: "/getUser/:card",
+      handler: "worker.findSpecific",
       config: {
         auth: false,
       },

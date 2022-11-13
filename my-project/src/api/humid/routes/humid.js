@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * humid router
  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+const { createCoreRouter } = require("@strapi/strapi").factories;
 
-module.exports = createCoreRouter('api::humid.humid');
+module.exports = createCoreRouter("api::humid.humid");

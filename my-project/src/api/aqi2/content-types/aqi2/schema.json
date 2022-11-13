@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aqi2s",
+  "info": {
+    "singularName": "aqi2",
+    "pluralName": "aqi2s",
+    "displayName": "Aqi2",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    },
+    "board_id": {
+      "type": "string"
+    }
+  }
+}

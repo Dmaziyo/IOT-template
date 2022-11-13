@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "temp2s",
+  "info": {
+    "singularName": "temp2",
+    "pluralName": "temp2s",
+    "displayName": "Temp2",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    },
+    "board_id": {
+      "type": "string"
+    }
+  }
+}

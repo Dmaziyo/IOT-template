@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "work_times",
+  "info": {
+    "singularName": "work-time",
+    "pluralName": "work-times",
+    "displayName": "work-time"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "start_time": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "string"
+    },
+    "card_num": {
+      "type": "string"
+    }
+  }
+}

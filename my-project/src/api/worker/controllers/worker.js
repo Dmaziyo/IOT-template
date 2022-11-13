@@ -7,19 +7,44 @@
 const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::worker.worker", ({ strapi }) => ({
-  // 根据卡号来修改状态
+  // // 根据卡号来修改状态,手动changeState
+  // async changeState(ctx) {
+  //   const card_num = ctx.params.card;
+  //   const { balance, state } = ctx.request.body;
+  //   // 找到卡号
+  //   let worker = await strapi.services["api::worker.worker"].findCard(card_num);
+  //   if (!worker)
+  //     return {
+  //       code: 404,
+  //       msg: "不存在该卡号",
+  //     };
+  //   worker.balance = balance;
+  //   worker.work_state = state;
+  //   // 使用entityService来自己实现
+  //   await strapi.entityService.update("api::worker.worker", worker.id, {
+  //     data: {
+  //       ...worker,
+  //     },
+  //   });
+  //   return {
+  //     code: 200,
+  //     msg: "修改成功",
+  //     curWorker: worker,
+  //   };
+  // },
   async changeState(ctx) {
     const card_num = ctx.params.card;
     // 找到卡号
     let worker = await strapi.services["api::worker.worker"].findCard(card_num);
-    console.log(worker);
     if (!worker)
       return {
         code: 404,
         msg: "不存在该卡号",
       };
+    if (!worker.work_state) {
+      worker.start_time = Date.now();
+    }
     worker.work_state = !worker.work_state;
-
     // 使用entityService来自己实现
     await strapi.entityService.update("api::worker.worker", worker.id, {
       data: {
@@ -29,8 +54,7 @@ module.exports = createCoreController("api::worker.worker", ({ strapi }) => ({
     return {
       code: 200,
       msg: "修改成功",
-      curState: worker.work_state,
-      pastState: !worker.work_state,
+      curWorker: worker,
     };
   },
 
@@ -39,7 +63,20 @@ module.exports = createCoreController("api::worker.worker", ({ strapi }) => ({
     const worker = await strapi.entityService.findMany("api::worker.worker", {
       filters: { work_state: true },
     });
-    return { length: worker.length };
+    return { workers: worker };
+  },
+
+  async findSpecific(ctx) {
+    const card = ctx.params.card;
+    let worker = await strapi.services["api::worker.worker"].findCard(card);
+
+    // 使用entityService来自己实现
+    await strapi.entityService.update("api::worker.worker", worker.id, {
+      data: {
+        ...worker,
+      },
+    });
+    return { worker };
   },
 
   // 自制create，会判断是否存在该卡号

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bicycles",
+  "info": {
+    "singularName": "bicycle",
+    "pluralName": "bicycles",
+    "displayName": "bicycle",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "GPS": {
+      "type": "string"
+    },
+    "state": {
+      "type": "boolean"
+    },
+    "power": {
+      "type": "float"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "parkinglots",
+  "info": {
+    "singularName": "parkinglot",
+    "pluralName": "parkinglots",
+    "displayName": "parkinglot",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "num": {
+      "type": "biginteger",
+      "default": "0",
+      "min": "0"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "swim_members",
+  "info": {
+    "singularName": "swim-member",
+    "pluralName": "swim-members",
+    "displayName": "swim-member",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "times": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "card_num": {
+      "type": "string"
+    }
+  }
+}

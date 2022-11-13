@@ -4,7 +4,8 @@
   "info": {
     "singularName": "temp",
     "pluralName": "temps",
-    "displayName": "temp"
+    "displayName": "temp",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,6 +16,9 @@
       "type": "string"
     },
     "created_time": {
+      "type": "string"
+    },
+    "board_id": {
       "type": "string"
     }
   }

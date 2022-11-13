@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "login_users",
+  "info": {
+    "singularName": "login-user",
+    "pluralName": "login-users",
+    "displayName": "LoginUser"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    }
+  }
+}
