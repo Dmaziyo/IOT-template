@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "parking_spots",
+  "info": {
+    "singularName": "parking-spot",
+    "pluralName": "parking-spots",
+    "displayName": "parking spot",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "card": {
+      "type": "string"
+    },
+    "state": {
+      "type": "boolean"
+    },
+    "balance": {
+      "type": "biginteger"
+    },
+    "entertime": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "type": {
+      "type": "string"
+    }
+  }
+}
