@@ -5,7 +5,7 @@
  */
 
 const { createCoreController } = require("@strapi/strapi").factories;
-
+let timer = null;
 module.exports = createCoreController(
   "api::parking-spot.parking-spot",
   ({ strapi }) => ({
@@ -41,6 +41,7 @@ module.exports = createCoreController(
 
     async checkState(ctx) {
       let result = null;
+      let timer = null;
       let { card, type } = ctx.request.body;
       try {
         let { balance, id, state, entertime } = await strapi.db
@@ -76,7 +77,7 @@ module.exports = createCoreController(
             let interval = Math.floor(
               (Date.now() - parseInt(entertime)) / 1000
             );
-            const fee = interval < 15 ? 5 : interval < 30 ? 10 : 15;
+            const fee = Math.floor(interval / 10) * 5 + 5;
             result = await strapi.entityService.update(
               "api::parking-spot.parking-spot",
               id,
@@ -89,9 +90,24 @@ module.exports = createCoreController(
                 },
               }
             );
+            // 添加停车记录
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(async () => {
+              await strapi.services[
+                "api::parking-history.parking-history"
+              ].create({
+                data: {
+                  type: type,
+                  card: card,
+                  fee: `${fee}元`,
+                  entertime: `${new Date(parseInt(entertime)).toString()}秒`,
+                  time: `${interval}秒`,
+                },
+              });
+            }, 1000);
             return {
               code: 200,
-              msg: `出库成功,停留${fee}秒`,
+              msg: `出库成功,停留${interval}秒`,
               ...result,
             };
           default:

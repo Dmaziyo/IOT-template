@@ -3,14 +3,17 @@
 /**
  * temp controller
  */
-
 const { createCoreController } = require("@strapi/strapi").factories;
 
 module.exports = createCoreController("api::temp2.temp2", ({ strapi }) => ({
-  // 获取所有正在上班的人
   async getAll(ctx) {
     const id = ctx.params.id;
-    let { limit = false } = ctx.request.body;
+    let { limit, curPage, startTime, endTime } = ctx.request.body;
+    limit = limit ? +limit : 50;
+    curPage = curPage ? +curPage : 1;
+    startTime = startTime ? +startTime : 0;
+    endTime = endTime ? +endTime : Date.now();
+    console.log("startTime", limit, curPage, startTime, endTime);
     let data = await strapi.db
       .query("api::temp2.temp2")
       .findMany({ where: { board_id: id } });
@@ -20,10 +23,12 @@ module.exports = createCoreController("api::temp2.temp2", ({ strapi }) => ({
     // 唯一日期
     let unique_date = [];
     data.forEach((item) => {
-      let cur_time = item.created_time;
+      let cur_time = new Date(item.created_time).getTime();
       if (!unique_date.includes(cur_time)) {
-        unique_date.push(cur_time);
-        uniqueData.push(item);
+        if (cur_time > startTime && cur_time < endTime) {
+          unique_date.push(cur_time);
+          uniqueData.push(item);
+        }
       }
     });
     uniqueData.sort((a, b) => {
@@ -31,7 +36,10 @@ module.exports = createCoreController("api::temp2.temp2", ({ strapi }) => ({
       const tipB = new Date(b.created_time).getTime();
       return tipB - tipA;
     });
-
-    return limit ? uniqueData.slice(0, +limit) : uniqueData;
+    let start = (curPage - 1) * limit;
+    return {
+      count: uniqueData.length,
+      curPage: limit ? uniqueData.slice(start, start + limit) : uniqueData,
+    };
   },
 }));

@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "parking_histories",
+  "info": {
+    "singularName": "parking-history",
+    "pluralName": "parking-histories",
+    "displayName": "parking-history",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "card": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "entertime": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "fee": {
+      "type": "string"
+    }
+  }
+}

@@ -20,6 +20,11 @@
     },
     "board_id": {
       "type": "string"
+    },
+    "disconnect": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }

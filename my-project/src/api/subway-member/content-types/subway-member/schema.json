@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subway_members",
+  "info": {
+    "singularName": "subway-member",
+    "pluralName": "subway-members",
+    "displayName": "SubwayMember",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "card": {
+      "type": "string"
+    },
+    "state": {
+      "type": "boolean",
+      "default": false
+    },
+    "money": {
+      "type": "biginteger"
+    }
+  }
+}
