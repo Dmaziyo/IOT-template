@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "water_histories",
+  "info": {
+    "singularName": "water-history",
+    "pluralName": "water-histories",
+    "displayName": "water_history",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "board_id": {
+      "type": "string"
+    },
+    "f_tot": {
+      "type": "string"
+    },
+    "card_num": {
+      "type": "string"
+    },
+    "created_time": {
+      "type": "string"
+    }
+  }
+}

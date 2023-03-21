@@ -1,21 +1,20 @@
 {
   "kind": "collectionType",
-  "collectionName": "bicycles",
+  "collectionName": "products",
   "info": {
-    "singularName": "bicycle",
-    "pluralName": "bicycles",
-    "displayName": "bicycle",
-    "description": ""
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "GPS": {
+    "pid": {
       "type": "string"
     },
-    "state": {
+    "vid": {
       "type": "string"
     }
   }

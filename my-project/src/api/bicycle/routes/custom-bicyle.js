@@ -10,7 +10,15 @@ module.exports = {
     },
     {
       method: "POST",
-      path: "/bicycle/changeState/:id/:type",
+      path: "/bicycle/changeState",
+      handler: "bicycle.changeState",
+      config: {
+        auth: false,
+      },
+    },
+    {
+      method: "POST",
+      path: "/bicycle/changeState1",
       handler: "bicycle.changeState",
       config: {
         auth: false,

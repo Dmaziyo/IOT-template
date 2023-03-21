@@ -37,7 +37,9 @@ module.exports = createCoreController("api::aqi.aqi", ({ strapi }) => ({
       const tipB = new Date(b.created_time).getTime();
       return tipB - tipA;
     });
+    console.log(limit);
     let start = (curPage - 1) * limit;
+    console.log(limit ? uniqueData.slice(start, start + limit) : uniqueData);
     return {
       count: uniqueData.length,
       curPage: limit ? uniqueData.slice(start, start + limit) : uniqueData,
